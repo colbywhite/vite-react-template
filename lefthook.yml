@@ -14,32 +14,32 @@ pre-commit:
     format:
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm exec biome format {all_files} --write
+      run: yarn biome format {all_files} --write
     check:
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm exec biome check {staged_files} --write
+      run: yarn biome check {staged_files} --write
     lint:
       files: git diff --name-only main
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm exec biome lint {staged_files} --write
+      run: yarn biome lint {staged_files} --write
     typecheck:
       files: git diff --name-only main
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm exec tsc -b
+      run: yarn tsc -b
     test-unit:
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm run test
+      run: yarn test
     test-coverage:
       glob: "*.{js,ts,jsx,tsx,json},package.json"
       exclude: '(^|/)(tests|stories)\.(ts|tsx)$'
-      run: pnpm run test:coverage
+      run: yarn test:coverage
 
-pre-push:
-  commands:
-    npm-audit:
-      tags: frontend security
-      run: pnpm audit --prod
+#pre-push:
+#  commands:
+#    npm-audit:
+#      tags: frontend security
+#      run: pnpm audit --prod
